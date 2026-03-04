@@ -1,0 +1,23 @@
+/* PROJECT: Superstore Sales Analysis 2026
+GOAL: Identify most profitable categories and cities
+*/
+
+-- 1. View all data to verify import
+SELECT * FROM Superstore_sales_Analysis_2026;
+
+-- 2. Find Total Sales and Profit by Category
+SELECT 
+    Category, 
+    SUM(CAST(Sales AS float)) AS TotalSales,
+    SUM(CAST(Profit AS float)) AS TotalProfit
+FROM Superstore_sales_Analysis_2026
+GROUP BY Category
+ORDER BY TotalSales DESC;
+
+-- 3. Find the Top 5 Most Profitable Cities
+SELECT TOP 5
+    City, 
+    SUM(CAST(Profit AS float)) AS TotalProfit
+FROM Superstore_sales_Analysis_2026
+GROUP BY City
+ORDER BY TotalProfit DESC;
